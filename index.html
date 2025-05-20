@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Slider</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .slider {
+      width: 90%;
+      max-width: 700px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      aspect-ratio: 16 / 9;
+      background-color: #000;
+    }
+    .slides {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+      width: 500%;
+      height: 100%;
+    }
+    .slide {
+      width: 100%;
+      flex-shrink: 0;
+      height: 100%;
+    }
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .navigation {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+      padding: 0 10px;
+    }
+    .nav-btn {
+      background: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
+      font-size: 18px;
+      border-radius: 5px;
+      transition: background 0.3s ease;
+    }
+    .nav-btn:hover {
+      background: rgba(0, 0, 0, 0.8);
+    }
+    @media (max-width: 600px) {
+      .nav-btn {
+        font-size: 14px;
+        padding: 8px 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="slider">
+    <div class="slides" id="slides">
+      <div class="slide"><img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470" alt="Mountain 1"></div>
+      <div class="slide"><img src="https://images.unsplash.com/photo-1601758123927-196d5f600978" alt="Mountain 2"></div>
+      <div class="slide"><img src="https://images.unsplash.com/photo-1516569422865-af84c2b9b3a3" alt="Mountain 3"></div>
+      <div class="slide"><img src="https://images.unsplash.com/photo-1500048993953-d23a436266cf" alt="Mountain 4"></div>
+      <div class="slide"><img src="https://images.unsplash.com/photo-1552083375-1447ce886485" alt="Mountain 5"></div>
+    </div>
+    <div class="navigation">
+      <button class="nav-btn" onclick="moveSlide(-1)">&#10094;</button>
+      <button class="nav-btn" onclick="moveSlide(1)">&#10095;</button>
+    </div>
+  </div>
+  <script>
+    const slides = document.getElementById('slides');
+    let index = 0;
+    function moveSlide(step) {
+      const totalSlides = slides.children.length;
+      index = (index + step + totalSlides) % totalSlides;
+      slides.style.transform = `translateX(-${index * 100}%)`;
+    }
+  </script>
+</body>
+</html>
