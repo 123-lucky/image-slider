@@ -21,4 +21,4 @@ This project is a basic responsive image slider built using **HTML** and **CSS**
 3. Click arrows to navigate through the images.
 
 ## ✅ Author
-**Intern Project - Week 2**
+lakshmi prasanna
